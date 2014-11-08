@@ -15,7 +15,8 @@ class Light implements ControllableInterface {
 
     public function activate($presetOrState)
     {
-
+        //check using notAlreadySet(), then check using isValidPreset()
+        //call activate on the state object stored in the array
     }
 
     public function deactivate()

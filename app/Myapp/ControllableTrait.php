@@ -95,6 +95,11 @@ trait ControllableTrait {
         return $this->currentState != $givenState;
     }
 
+    public function isValidPreset($preset)
+    {
+        return ($this->states[$preset] != $this->deactivator) && (isset($this->states[$preset]));
+    }
+
 
 
 
