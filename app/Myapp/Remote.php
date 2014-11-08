@@ -60,7 +60,16 @@ class Remote {
         return $number < 7;
     }
 
-    
+    public function getLastSlotPressed()
+    {
+        return $this->lastSlotPressed;
+    }
+
+    public function getLastPreset()
+    {
+        return $this->lastPresetUsed;
+    }
+
 
 
 
