@@ -35,28 +35,32 @@ class Remote {
         $this->currentPreset = $preset;
     }
 
-    public function getPreset($preset)
+    public function getPreset()
     {
         return $this->currentPreset;
     }
 
     public function setSlot(ControllableInterface $controllable, $slot = null)
     {
-        //if array less than  7
-        if(!isset($slot) && $this->checkSlotLength(count($this->slots)))
-        {
-            $this->slots[] = $controllable;
-        }
-
-        //if $slot <= 7 - then add $controllable to the specified slot
-        if()
-        //if no slot specified add to the slot
+       return (!is_null($slot)) ? $this->noSlotSpecified($controllable) : $this->slotSpecified($controllable, $slot);
     }
 
-    public function checkSlotLength($number)
+    public function noSlotSpecified(ControllableInterface $controllable)
+    {
+        return $this->checkAgainstSlotLimit(count($this->slots)) ? $this->slots[] = $controllable : 'No more room';
+    }
+
+    public function slotSpecified($controllable, $slot)
+    {
+        return $this->checkAgainstSlotLimit($slot) ? $this->slots[$slot] = $controllable : 'Invalid Slot';
+    }
+
+    public function checkAgainstSlotLimit($number)
     {
         return $number < 7;
     }
+
+    
 
 
 
